@@ -121,4 +121,4 @@ STATICFILES_DIRS = [
 
 ]
 
-STATIC_ROOT = 'static'
+STATIC_ROOT = 'WebCVDjangoI'
