@@ -120,3 +120,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "CV/../CV/../static"),
 
 ]
+
+STATIC_ROOT = 'static'
