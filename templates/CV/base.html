@@ -1,0 +1,971 @@
+{% load staticfiles %}
+{% load static %}
+{% load bootstrap %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'CV/bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="/static/CV/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Pattaya" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Cabin" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ivanyk CV</title>
+    <style>
+        /*General*/
+        .flex-around{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .flex-between{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .flex-column{
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+        }
+        .blue{
+            color: dodgerblue
+        }
+        body{
+            font-family: 'Cabin', sans-serif !important;
+            background-color: silver;
+        }
+        .lbl{
+            width: 20em;
+        }
+        #myBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 20px; /* Place the button at the bottom of the page */
+            right: 30px; /* Place the button 30px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: dodgerblue; /* Set a background color */
+            color: silver; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 50px; /* Rounded corners */
+        }
+
+        #myBtn:hover {
+            background-color: darkcyan; /* Add a dark-grey background on hover */
+        }
+        /*Header*/
+        #first a{
+            color: black;
+        }
+        #first .smoothScroll:hover{
+            text-decoration: underline !important;
+        }
+        #first{
+            font-size: 1em !important;
+        }
+        .navigation{
+            border-radius: 0;
+            margin-bottom: 0;
+        }
+        .contact{
+            padding: 3% 5%;
+        }
+        /*Second*/
+        #second{
+            font-size: 1.3em !important;
+            background: url("/static/CV/img/dark-triangles.png");
+            padding: 3% 0 3% 0;
+        }
+        .presentation h1, h2, h3{
+            font-size: 3em !important;
+        }
+        .presentation{
+            padding-top: 6%;
+        }
+        /*Fourth*/
+        .rotated{
+            transform: rotate(180deg);
+        }
+        #fourth{
+            background: url('/static/CV/img/footer_lodyas.png');
+            color: silver;
+            font-size: 1.2em;
+            padding: 2% 0
+        }
+        /*Fifth*/
+        .work-block{
+            background-color: rgba(146, 145, 159, 0.5);
+            -webkit-box-shadow:0 0 20px black;
+            -o-box-shadow:0 0 20px black;
+            -moz-box-shadow:0 0 20px black;
+            box-shadow:0 0 20px black;
+            margin: 2% 0;
+            padding: 1.5%;
+            font-size: 1.3em;
+            transition: 1s;
+        }
+
+        #fifth{
+            padding: 2% 0;
+        }
+        /*Sixths*/
+        #sixths{
+            background: url('/static/CV/img/congruent_outline.png');
+            color: silver;
+            font-size: 1.4em;
+            padding: 2% 0;
+            line-height: 2em
+        }
+        /*Seventh*/
+        #seventh{
+            font-size: 1.3em;
+            padding: 2% 0;
+        }
+        /*Eights*/
+        #eights{
+            background: url('/static/CV/img/escheresque_ste.png');
+            color: silver;
+            padding: 2% 0;
+            line-height: 2em
+        }
+        #myBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 20px; /* Place the button at the bottom of the page */
+            right: 30px; /* Place the button 30px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: dodgerblue; /* Set a background color */
+            color: silver; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 50px; /* Rounded corners */
+        }
+
+        #myBtn:hover {
+            background-color: darkcyan;
+        }
+        @media screen and (min-width: 1060px){
+            .work-block:hover{
+            transform: scale(1.1, 1.1);
+            -moz-transform: scale(1.1, 1.1); /* Для Firefox */
+            -ms-transform: scale(1.1, 1.1); /* Для IE */
+            -webkit-transform: scale(1.1, 1.1); /* Для Safari, Chrome, iOS */
+            -o-transform: scale(1.1, 1.1); /* Для Opera */
+            transition: 1s;
+            cursor: pointer;
+            }
+        }
+        @media screen and (max-width: 1112px){
+            #top{
+                font-size: 0.9em;
+            }
+        }
+        @media screen and (max-width: 1040px){
+            #top{
+                font-size: 0.8em;
+            }
+            #fifth{
+                font-size: 1em;
+            }
+        }
+
+        @media screen and (max-width: 992px){
+            #fourth{
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                align-items: center;
+            }
+            #sixths{
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        @media screen and (max-width: 800px){
+            .letter{
+                font-size: 1em !important;
+            }
+             #seventh{
+                 font-size: 1.1em !important;
+             }
+        }
+        @media screen and (max-width: 768px){
+            #second{
+                font-size: 1em !important;
+            }
+            #fourth{
+                font-size: 1em !important;
+            }
+            #sixths{
+                font-size: 1em !important;
+            }
+            #tenths{
+                font-size: 1em !important;
+            }
+            .work-block{
+                font-size: 0.8em !important;
+            }
+        }
+        @media screen and (max-width: 500px){
+        }
+        @media screen and (max-width: 370px){
+            #second{
+                font-size: 0.8em !important;
+            }
+            #seventh{
+                font-size: 0.8em !important;
+            }
+            .letter{
+                font-size: 0.9em !important;
+            }
+            #ninth{
+                padding: 0 1%;
+            }
+            #tenths{
+                font-size: 0.8em !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#top" id="myBtn" title="Go to top" class="smoothScroll"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+    <section id="first">
+        <nav class="navbar navbar-default navigation" id="top">
+              <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#" ><i class="fa fa-briefcase" aria-hidden="true"></i> Curriculum Vitae</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="active"><a href="#fourth" class="smoothScroll">Few words about me</a></li>
+                        <li><a href="#fifth" class="smoothScroll">Working Experience</a></li>
+                        <li><a href="#sixths" class="smoothScroll">Education and Languages</a></li>
+                        <li><a href="#seventh" class="smoothScroll">Personal Skills and Activity</a></li>
+                        <li><a href="#eights" class="smoothScroll">Coding Background</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact <span class="caret"></span></a>
+                        <ul class="dropdown-menu" style="padding: 10%">
+                            <form class="form-row" action="" method="post">
+                                {% csrf_token %}
+                                {{ form.name|bootstrap }}
+                                {{ form.email|bootstrap }}
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </ul>
+                      </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav>
+    </section>
+    <section id="second">
+        <div id="particles-js" style="position: absolute; z-index: 0; width: 100%; height: 90%;" class="hidden-xs hidden-sm"></div>
+        <div class="container hidden-xs hidden-sm" style="z-index: 2">
+            <div class="row">
+                <div class="col-md-6 presentation">
+                    <h1>Hello...</h1>
+                    <h2>My name is Vlad...</h2>
+                    <h3>And I want to make this world a better place <i class="fa fa-globe" aria-hidden="true" style="color: dodgerblue"></i></h3>
+                    <br>
+                    <div class="flex-between social-btn" style="width: 50%">
+                        <a class="btn btn-primary smoothScroll" href="#ninth">Contact me</a>
+                        <span style="font-size: 1.5em">or...</span>
+                        <div style="font-size: 1.5em">
+                            <a href="https://www.facebook.com/vlad.ivanyk.35"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                            <a href="https://www.linkedin.com/in/vladyslav-ivanyk-7128b711b/"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                            <a href="https://www.instagram.com/vladivanyk/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-offset-1 text-right hidden-xs hidden-sm">
+                    <img class="img-responsive img-circle" src="{% static 'CV/img/CVimg.jpg' %}" style="margin-top: 5%; border: 3px solid dodgerblue;">
+                </div>
+            </div>
+        </div>
+        <!--Mobile Friendly-->
+        <div class="container visible-xs-block visible-sm-block" style="z-index: 2">
+            <div class="row">
+                <div class="col-md-6 presentation text-center flex-column">
+                    <h1>Hello...</h1>
+                    <h2>My name is Vlad...</h2>
+                    <img class="img-responsive img-rounded" src="{% static 'CV/img/CVimg.jpg' %}" style=" border: 3px solid dodgerblue;">
+                </div>
+                <div class="col-md-3 text-center flex-around">
+                    <h3>And I want to make this world a better place <i class="fa fa-globe" aria-hidden="true" style="color: dodgerblue"></i></h3>
+                </div>
+                <div class="col-md-3">
+                    <div class="flex-around social-btn">
+                        <button class="btn btn-primary">Contact me</button>
+                        <span style="font-size: 1.5em">or...</span>
+                        <div style="font-size: 1.5em">
+                            <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End-->
+    </section>
+    <section id="third">
+        <div class="container flex-column">
+            <div class="row text-center"><img src="{% static 'CV/img/decoration-1.png' %}" class="img-responsive"></div>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                    <blockquote class="letter">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget augue vitae lorem scelerisque hendrerit.
+                        Mauris pulvinar at mi ac pulvinar. Proin a lectus turpis. Integer consectetur at nibh eget aliquet.
+                        Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla tincidunt auctor ligula sed mattis.
+                        Suspendisse suscipit diam at augue efficitur vestibulum. Orci varius natoque penatibus et magnis dis parturient montes,
+                        nascetur ridiculus mus.Mauris facilisis tincidunt ligula, eget facilisis ipsum dapibus et.
+                        Nullam vitae faucibus lacus. Vivamus lobortis urna nibh.
+                        <footer>Albert Einstein</footer>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="row text-center rotated" style="transform: rotate(180deg);"><img src="{% static 'CV/img/decoration-1.png' %}" class="img-responsive"></div>
+        </div>
+    </section>
+    <section id="fourth" style="background: url('/static/CV/img/footer_lodyas.png'); color: silver; font-size: 1.2em; padding: 2% 0">
+        <div class="container">
+            <div class="row text-center">
+                <h1>Few words about me...</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-5 flex-column">
+                    <img src="{% static 'CV/img/person.png'%}">
+                    <div><h3 class="blue" style="color: dodgerblue; text-decoration: underline">Vladyslav Ivanyk</h3><br>
+                        <span class="blue" style="color: dodgerblue">Age:</span> 21<br>
+                        <span class="blue" style="color: dodgerblue">Contact number:</span> +38 093 511 67 13<br>
+                        <span class="blue" style="color: dodgerblue">Email:</span> vlad.ivanyk@gmail.com<br>
+                    </div>
+                </div>
+                <br>
+                <div class="col-md-5 col-md-offset-2 flex-column">
+                    <img src="{% static 'CV/img/info.png'%}" style="margin-top: 10px">
+                    <p>
+                        <br><br>
+                        <span class="blue" style="color: dodgerblue">Personal features:</span>
+                        {% for foo in personal_features %}
+                            {{ foo.feature }}
+                        {% endfor %}
+                        <br><br>
+
+                        <span class="blue" style="color: dodgerblue">Hobbies and Interests:</span>
+                        {% for foo in hobbies_and_interests %}
+                            {{ foo.interest }}
+                        {% endfor %}
+                     </p>
+                </div>
+                <div class="row text-center visible-md-block visible-lg-block"><img src="{% static 'CV/img/decoration-3.png'%}"></div>
+            </div>
+        </div>
+    </section>
+    <section id="fifth">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1>Working Experience</h1>
+                </div>
+            </div>
+            <div class="row work-block">
+                <div class="col-md-1">
+                    <i class="fa fa-bookmark" aria-hidden="true" style="font-size: 3em;"></i>
+                </div>
+                <div class="col-md-11 flex-around">
+                    <img src="{% static 'CV/img/tropic.png'%}" class="img-respomsive visible-lg-block visible-md-block visible-sm-block" style="width: 30%">
+                    <!--Mobile-->
+                    <img src="{% static 'CV/img/tropic.png'%}" class="img-respomsive visible-xs-block" style="width: 50%">
+                    <!--end-->
+
+                    <div style="width: 30%" class="text-center visible-lg-block visible-md-block visible-sm-block">
+                        <h4>
+                            <span class="blue" style="color: dodgerblue"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                            Vinnitsya, Ukraine
+                        </h4>
+                        <span style="text-decoration: underline">01.2017 – now</span><br>
+                     </div>
+                    <div style="width: 30%" class="visible-lg-block visible-md-block visible-sm-block">
+                        <h4>Activity:</h4>
+                        <ul>
+                            <li><span class="blue" style="color: dodgerblue">Social Media Marketing</span></li>
+                            <li>Communication with <span class="blue" style="color: dodgerblue">foreign clients</span></li>
+                            <li>Promoting brand through social networks</li>
+                            <li>Different advertising campaigns</li>
+                        </ul>
+                    </div>
+                    <!--Mobile-->
+                    <div style="width: auto" class="visible-xs-block">
+                        <h4>
+                            <span class="blue" style="color: dodgerblue"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                            Vinnitsya, Ukraine
+                        </h4>
+                        <span style="text-decoration: underline">01.2017 – now</span><br>
+                        <h4>Activity:</h4>
+                        <ul>
+                            <li><span class="blue" style="color: dodgerblue">Social Media Marketing</span></li>
+                            <li>Communication with <span class="blue" style="color: dodgerblue">foreign clients</span></li>
+                            <li>Promoting brand through social networks</li>
+                            <li>Different advertising campaigns</li>
+                        </ul>
+                     </div>
+                    <!--end-->
+                </div>
+            </div>
+            <div class="row work-block">
+                <div class="col-md-1">
+                    <i class="fa fa-bookmark" aria-hidden="true" style="font-size: 3em;"></i>
+                </div>
+                <div class="col-md-11 flex-around">
+                    <img src="{% static 'CV/img/DD.png'%}" class="img-respomsive visible-lg-block visible-md-block visible-sm-block" style="width: 30%">
+                    <!--Mobile-->
+                    <img src="{% static 'CV/img/DD.png'%}" class="img-respomsive visible-xs-block" style="width: 50%">
+                    <!--end-->
+                    <div style="width: 30%" class="text-center visible-lg-block visible-md-block visible-sm-block">
+                        <h4>
+                            <span class="blue" style="color: dodgerblue"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                            Florida, USA
+                        </h4>
+                        <span style="text-decoration: underline">07.2015-09.2015</span><br>
+                     </div>
+                    <div style="width: 40%" class="visible-lg-block visible-md-block visible-sm-block">
+                        <h4>Activity:</h4>
+                        <ul>
+                            <li>Manager, coffee maker, baker, sandwich maker, cashier</li>
+                            <li>Studied and executed all existed positions in the Dunkin Donuts café</li>
+                            <li>Get <span class="blue" style="color: dodgerblue">Manager internships</span></li>
+                            <li>Get <span class="blue" style="color: dodgerblue">two recommendation</span> letters from the elder personal</li>
+                        </ul>
+                    </div>
+                    <!--Mobile-->
+                    <div class="visible-xs-block">
+                        <h4>
+                            <span class="blue" style="color: dodgerblue"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                            Florida, USA
+                        </h4>
+                        <span style="text-decoration: underline">07.2015-09.2015</span><br>
+                        <h4>Activity:</h4>
+                        <ul>
+                            <li>Manager, coffee maker, baker, sandwich maker, cashier</li>
+                            <li>Studied and executed all existed positions in the Dunkin Donuts café</li>
+                            <li>Get <span class="blue" style="color: dodgerblue">Manager internships</span></li>
+                            <li>Get <span class="blue" style="color: dodgerblue">two recommendation</span> letters from the elder personal</li>
+                        </ul>
+                     </div>
+                    <!--end-->
+                </div>
+            </div>
+            <div class="row work-block">
+                <div class="col-md-1">
+                    <i class="fa fa-bookmark" aria-hidden="true" style="font-size: 3em;"></i>
+                </div>
+                <div class="col-md-11 flex-around">
+                    <img src="{% static 'CV/img/unicef.png'%}" class="img-respomsive visible-lg-block visible-md-block visible-sm-block" style="width: 30%">
+                    <!--Mobile-->
+                     <img src="{% static 'CV/img/unicef.png'%}" class="img-respomsive visible-xs-block" style="width: 50%">
+                    <!--end-->
+                    <div style="width: 30%" class="text-center visible-lg-block visible-md-block visible-sm-block">
+                        <h4>
+                            <span class="blue" style="color: dodgerblue"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                            Warsaw, Poland
+                        </h4>
+                        <span style="text-decoration: underline">08.2014- 11.2014</span><br>
+                     </div>
+                    <div style="width: 40%" class="visible-lg-block visible-md-block visible-sm-block">
+                        <h4>Activity:</h4>
+                        <ul>
+                            <li>Fundraiser of <span class="blue" style="color: dodgerblue">UNICEF</span></li>
+                            <li>Get a marketing experience</li>
+                            <li>Team work skills obtained</li>
+                            <li>Communication skills upgraded</li>
+                        </ul>
+                    </div>
+                    <!--Mobile-->
+                    <div class="visible-xs-block">
+                        <h4>
+                            <span class="blue" style="color: dodgerblue"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                            Warsaw, Poland
+                        </h4>
+                        <span style="text-decoration: underline">08.2014- 11.2014</span><br>
+                        <h4>Activity:</h4>
+                        <ul>
+                            <li>Fundraiser of <span class="blue" style="color: dodgerblue">UNICEF</span></li>
+                            <li>Get a marketing experience</li>
+                            <li>Team work skills obtained</li>
+                            <li>Communication skills upgraded</li>
+                        </ul>
+                     </div>
+                    <!--end-->
+                </div>
+            </div>
+            <div class="row work-block">
+                <div class="col-md-1">
+                    <i class="fa fa-bookmark" aria-hidden="true" style="font-size: 3em;"></i>
+                </div>
+                <div class="col-md-11 flex-around">
+                    <img src="{% static 'CV/img/vls.png'%}" class="img-respomsive visible-lg-block visible-md-block visible-sm-block" style="width: 30%">
+                    <!--Mobile-->
+                    <img src="{% static 'CV/img/vls.png'%}" class="img-respomsive visible-xs-block" style="width: 50%">
+                    <!--end-->
+                    <div style="width: 30%" class="text-center visible-lg-block visible-md-block visible-sm-block">
+                        <h4>
+                            <span class="blue" style="color: dodgerblue"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                            Vinnitsya, Ukraine
+                        </h4>
+                        <span style="text-decoration: underline">05.2014- 08.2014</span><br>
+                     </div>
+                    <div style="width: 40%" class="visible-lg-block visible-md-block visible-sm-block">
+                        <h4>Activity:</h4>
+                        <ul>
+                            <li><span class="blue" style="color: dodgerblue">Manger</span></li>
+                            <li>Was helping in the creation of <span class="blue" style="color: dodgerblue">business<br> and marketing strategy</span></li>
+                            <li>
+                                Responsible for the <span class="blue" style="color: dodgerblue">foreign communication</span><br>
+                                (ex. Foreign partner universities)
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Mobile-->
+                    <div class="visible-xs-block">
+                        <h4>
+                            <span class="blue" style="color: dodgerblue"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                           Vinnitsya, Ukraine
+                        </h4>
+                        <span style="text-decoration: underline">05.2014- 08.2014</span><br>
+                        <h4>Activity:</h4>
+                        <ul>
+                            <li><span class="blue" style="color: dodgerblue">Manger</span></li>
+                            <li>Was helping in the creation of <span class="blue" style="color: dodgerblue">business<br> and marketing strategy</span></li>
+                            <li>
+                                Responsible for the <span class="blue" style="color: dodgerblue">foreign communication</span><br>
+                                (ex. Foreign partner universities)
+                            </li>
+                        </ul>
+                     </div>
+                    <!--end-->
+                </div>
+            </div>
+            <div class="row work-block">
+                <div class="col-md-1">
+                    <i class="fa fa-bookmark" aria-hidden="true" style="font-size: 3em;"></i>
+                </div>
+                <div class="col-md-11 flex-around">
+                    <div style="width: 30%;" class="visible-lg-block visible-md-block visible-sm-block">
+                        <span class="blue"><h1 style="font-size: 3em !important;">Megatour</h1></span>
+                    </div>
+                    <!--Mobile-->
+                    <div style="width: 50%;" class="visible-xs-block ">
+                        <span class="blue"><h1 style="font-size: 2.5em !important;">Megatour</h1></span>
+                    </div>
+                    <!--end-->
+                    <div style="width: 30%" class="text-center visible-lg-block visible-md-block visible-sm-block">
+                        <h4>
+                            <span class="blue" style="color: dodgerblue"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                            Vinnitsya, Ukraine
+                        </h4>
+                        <span style="text-decoration: underline">06.2013- 09.2013</span><br>
+                     </div>
+                    <div style="width: 40%" class="visible-lg-block visible-md-block visible-sm-block">
+                        <h4>Activity:</h4>
+                        <ul>
+                            <li>Tourism Manager</li>
+                            <li>Communication with customers</li>
+                            <li>Developing of advertisement strategy</li>
+                        </ul>
+                    </div>
+                    <!--Mobile-->
+                    <div class="visible-xs-block">
+                        <h4>
+                            <span class="blue" style="color: dodgerblue"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                           Vinnitsya, Ukraine
+                        </h4>
+                        <span style="text-decoration: underline">06.2013- 09.2013</span><br>
+                        <h4>Activity:</h4>
+                        <ul>
+                            <li>Tourism Manager</li>
+                            <li>Communication with customers</li>
+                            <li>Developing of advertisement strategy</li>
+                        </ul>
+                     </div>
+                    <!--end-->
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="sixths">
+        <div class="container">
+            <div class="row text-center"><div class="col-md-12"><h1>Education and Languages</h1></div></div>
+            <div class="row">
+                <div class="col-md-5 text-center">
+                    <img src="{% static 'CV/img/civitas_logo.png' %}">
+                    <p>
+                        <span class="blue" style="color: dodgerblue"><i class="fa fa-map-marker" aria-hidden="true"></i></span> Warsaw, Poland<br>
+                        <span class="blue" style="color: dodgerblue">Field:</span> International Relations<br>
+                        <span class="blue" style="color: dodgerblue">Specialization:</span> International Business (Bachelor degree)
+                    </p>
+                </div>
+                <div class="col-md-5 col-md-offset-2">
+                    <div class="text-center"><img src="{% static 'CV/img/lang.png'%}"></div>
+                    <div>
+                        <div>
+                            <span class="blue" style="color: dodgerblue">English:</span>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-info progress-bar-striped active" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="blue" style="color: dodgerblue">Polish:</span>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-info progress-bar-striped active" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="blue" style="color: dodgerblue">Russian:</span>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-info progress-bar-striped active" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="blue" style="color: dodgerblue">Ukrainian:</span>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-info progress-bar-striped active" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="seventh" style="font-size: 1.25em; padding: 2% 0; height: auto">
+        <div class="container visible-lg-block visible-md-block">
+            <div class="row text-center"><h1>Personal Skills and Activity</h1></div>
+            <div class="row" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div class="flex-column" style="width: 40%; margin-top: 8%; ">
+                    <img src="{% static 'CV/img/book.png'%}">
+                    <br>
+                    <ul>
+                         {% for foo in skills %}
+                            <li>{{ foo.skill }}</li>
+                         {% endfor %}
+                    </ul>
+                </div>
+                <div>
+                    <img src="{% static 'CV/img/divider.png'%}" style="height: auto" class="img-responsive">
+                </div>
+                <div class="flex-column" style="width: 40%; margin-top: 8%;">
+                    <img src="{% static 'CV/img/achieve.png'%}">
+                    <br>
+                    <ul>
+                        <li><span class="blue" style="color: dodgerblue">Vinnitsa Language School (Ukraine)</span>, course of English language</li>
+                        <li><span class="blue" style="color: dodgerblue">EMPIK (Poland)</span>, course of Polish Language</li>
+                        <li><span class="blue" style="color: dodgerblue">IELTS (International English Language Testing)</span>, scored <span class="blue" style="color: dodgerblue">6.0</span></li>
+                        <li><span class="blue" style="color: dodgerblue">TOEFL (Test of English as a Foreign Language)</span>, scored <span class="blue" style="color: dodgerblue">520</span></li>
+                        <li><span class="blue" style="color: dodgerblue">International Student’s Club (Poland)</span>, active participation in the club performance.</li>
+                        <li>Attending of seminars related to the <span class="blue" style="color: dodgerblue">International Relations</span> in the <span class="blue" style="color: dodgerblue">Collegium Civitas University</span> </li>
+                        <li><span class="blue" style="color: dodgerblue">Work and Travel USA (Florida, USA)</span></li>
+                        <li>Sport activity (boxing, judo, swimming, basketball etc.)</li>
+                        <li>Took part in the creation of BBC’s history film <span class="blue" style="color: dodgerblue">“The Passing Bell”</span></li>
+                        {% for foo in activity %}
+                            {{ foo.activity }}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--Moblie friendly-->
+        <div class="container visible-xs-block visible-sm-block flex-column">
+            <div class="row text-center"><h1>Personal Skills and Activity</h1></div>
+            <div class="row">
+                <div class="col-md-12 flex-column">
+                    <img src="{% static 'CV/img/book.png'%}">
+                    <br>
+                    <ul>
+                        {% for foo in skills %}
+                            <li>{{ foo.skill }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <img src="{% static 'CV/img/decoration-2.png'%}" class="img-responsive">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 flex-column">
+                    <img src="{% static 'CV/img/achieve.png'%}">
+                    <br>
+                    <ul>
+                        <li><span class="blue" style="color: dodgerblue">Vinnitsa Language School (Ukraine)</span>, course of English language</li>
+                        <li><span class="blue" style="color: dodgerblue">EMPIK (Poland)</span>, course of Polish Language</li>
+                        <li><span class="blue" style="color: dodgerblue">IELTS (International English Language Testing)</span>, scored <span class="blue" style="color: dodgerblue">6.0</span></li>
+                        <li><span class="blue" style="color: dodgerblue">TOEFL (Test of English as a Foreign Language)</span>, scored <span class="blue" style="color: dodgerblue">520</span></li>
+                        <li><span class="blue" style="color: dodgerblue">International Student’s Club (Poland)</span>, active participation in the club performance.</li>
+                        <li>Attending of seminars related to the <span class="blue" style="color: dodgerblue">International Relations</span> in the <span class="blue" style="color: dodgerblue">Collegium Civitas University</span> </li>
+                        <li><span class="blue" style="color: dodgerblue">Work and Travel USA (Florida, USA)</span></li>
+                        <li>Sport activity (boxing, judo, swimming, basketball etc.)</li>
+                        <li>Took part in the creation of BBC’s history film <span class="blue" style="color: dodgerblue">“The Passing Bell”</span></li>
+                        {% for foo in activity %}
+                            {{ foo.activity }}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--End-->
+    </section>
+    <section id="eights">
+        <div class="container visible-lg-block visible-md-block">
+            <div class="row text-center" style="font-size: 1.4em;"><h1>Coding Background</h1></div>
+            <div class="row flex-between" style="font-size: 1.1em;">
+                <div >
+                    <h1><span class="blue" style="color: dodgerblue">Where did I get the knowledge?</span></h1>
+                    <ul>
+                        <li>Microsoft course of <span class="blue" style="color: dodgerblue">C#</span> base</li>
+                        <li>
+                            <span class="blue" style="color: dodgerblue">C#</span>,
+                            <span class="blue" style="color: dodgerblue">Java</span>,
+                            <span class="blue" style="color: dodgerblue">HTML</span>,
+                            <span class="blue" style="color: dodgerblue">CSS</span>,
+                            <span class="blue" style="color: dodgerblue">C++</span>,
+                            <span class="blue" style="color: dodgerblue">Python</span>
+                            Tutorial Courses <span class="blue" style="color: dodgerblue">SoloLearn App</span>
+                        </li>
+                        <li>
+                            <span class="blue" style="color: dodgerblue">W3 School</span> courses
+                        </li>
+                        <li>
+                            <span class="blue" style="color: dodgerblue">Vinnitsa National Technological University</span>
+                            course of <span class="blue" style="color: dodgerblue">C++</span>
+                        </li>
+                        <li><span class="blue" style="color: dodgerblue">Self-education</span> on coding</li>
+                    </ul>
+                    <img src="{% static 'CV/img/decoration-3.png'%}" style="width: 90%; margin-left: -6%">
+                    <h1><span class="blue" style="color: dodgerblue">What I know?</span></h1>
+                    <ul>
+                        <li>
+                            <span class="blue" style="color: dodgerblue">Front-end</span>
+                            development <span class="blue" style="color: dodgerblue">HTML</span>,
+                            <span class="blue" style="color: dodgerblue">CSS</span>,
+                            <span class="blue" style="color: dodgerblue">JQuery</span>,
+                            <span class="blue" style="color: dodgerblue">Bootstrap</span>
+                        </li>
+                        <li>Core knowledge of <span class="blue" style="color: dodgerblue">C#</span>,
+                            <span class="blue" style="color: dodgerblue">C++</span>, <span class="blue" style="color: dodgerblue">Java</span>,
+                            <span class="blue" style="color: dodgerblue">Python</span>
+                        </li>
+                        <li>Basic knowledge of <span class="blue" style="color: dodgerblue">Object-Oriented Principles</span></li>
+                        <li>Some experience on <span class="blue" style="color: dodgerblue">Django</span> framework </li>
+                        <li>How to use <span class="blue" style="color: dodgerblue">Google Search
+                            <i class="fa fa-smile-o" aria-hidden="true"></i></span>
+                        </li>
+                    </ul>
+                </div>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 60%; border: 3px solid dodgerblue">
+                          <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="{% static 'CV/img/html.jpg' %}">
+                        </div>
+
+                        <div class="item">
+                            <img src="{% static 'CV/img/css_certificate.jpg' %}">
+                        </div>
+
+                        <div class="item">
+                            <img src="{% static 'CV/img/java_certificate.jpg' %}">
+                        </div>
+
+                        <div class="item">
+                            <img src="{% static 'CV/img/0001.jpg'%}">
+                        </div>
+                    </div>
+
+                          <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--Mobile Friendly-->
+        <div class="container visible-xs-block visible-sm-block flex-column">
+            <div class="row text-center" style="font-size: 1.4em;"><h1>Coding Background</h1></div>
+            <div class="flex-column">
+                <div class="flex-column">
+                    <h1><span class="blue" style="color: dodgerblue">Where did I get the knowledge?</span></h1>
+                    <ul>
+                        <li>Microsoft course of <span class="blue" style="color: dodgerblue">C#</span> base</li>
+                        <li>
+                            <span class="blue" style="color: dodgerblue">C#</span>,
+                            <span class="blue" style="color: dodgerblue">Java</span>,
+                            <span class="blue" style="color: dodgerblue">HTML</span>,
+                            <span class="blue" style="color: dodgerblue">CSS</span>,
+                            <span class="blue" style="color: dodgerblue">C++</span>,
+                            <span class="blue" style="color: dodgerblue">Python</span>
+                            Tutorial Courses <span class="blue" style="color: dodgerblue">SoloLearn App</span>
+                        </li>
+                        <li>
+                            <span class="blue" style="color: dodgerblue">W3 School</span> courses
+                        </li>
+                        <li>
+                            <span class="blue" style="color: dodgerblue">Vinnitsa National Technological University</span>
+                            course of <span class="blue" style="color: dodgerblue">C++</span>
+                        </li>
+                        <li><span class="blue" style="color: dodgerblue">Self-education</span> on coding</li>
+                    </ul>
+                </div>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" style=" border: 3px solid dodgerblue">
+                          <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="{% static 'CV/img/html.jpg' %}">
+                        </div>
+
+                        <div class="item">
+                            <img src="{% static 'CV/img/css_certificate.jpg' %}">
+                        </div>
+
+                        <div class="item">
+                            <img src="{% static 'CV/img/java_certificate.jpg' %}">
+                        </div>
+
+                        <div class="item">
+                            <img src="{% static 'CV/img/0001.jpg'%}">
+                        </div>
+                    </div>
+
+                          <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div class="flex-column">
+                    <h1><span class="blue" style="color: dodgerblue">What I know?</span></h1>
+                    <ul>
+                        <li>
+                            <span class="blue" style="color: dodgerblue">Front-end</span>
+                            development <span class="blue" style="color: dodgerblue">HTML</span>,
+                            <span class="blue" style="color: dodgerblue">CSS</span>,
+                            <span class="blue" style="color: dodgerblue">JQuery</span>,
+                            <span class="blue" style="color: dodgerblue">Bootstrap</span>
+                        </li>
+                        <li>Core knowledge of <span class="blue" style="color: dodgerblue">C#</span>,
+                            <span class="blue" style="color: dodgerblue">C++</span>, <span class="blue" style="color: dodgerblue">Java</span>,
+                            <span class="blue" style="color: dodgerblue">Python</span>
+                        </li>
+                        <li>Basic knowledge of <span class="blue" style="color: dodgerblue">Object-Oriented Principles</span></li>
+                        <li>Some experience on <span class="blue" style="color: dodgerblue">Django</span> framework </li>
+                        <li>How to use <span class="blue" style="color: dodgerblue">Google Search
+                            <i class="fa fa-smile-o" aria-hidden="true"></i></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--End-->
+    </section>
+    <section id="ninth" style="padding: 2% 0">
+        <div class="container">
+            <div class="row text-center">
+                <h1>Contact Me</h1>
+            </div>
+            <div class="row flex-between">
+                <div>
+                    <form action="" method="post" class="form-row contact">
+                        {% csrf_token %}
+                        {{ form|bootstrap }}
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                <div style="width: 30%" class="text-center visible-lg-block visible-md-block">
+                    <img src="{% static 'CV/img/mail (2).png'%}">
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section id="tenths" style="background-color: #1e1e1e; color: silver; font-size: 1.2em">
+        <div class="container">
+            <div class="row flex-between">
+                <div>
+                    All rights reserved 2017&copy
+                </div>
+                <div style="width: 30%;" class="text-center visible-md-block visible-lg-block">
+                    <span >Powered By: <img src="{% static 'CV/img/django.png' %}" style="height: 10vh"></span>
+                </div>
+                <div class="text-right">
+                    Social Links:
+                    <a href="https://www.facebook.com/vlad.ivanyk.35"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/vladyslav-ivanyk-7128b711b/"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/vladivanyk/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'CV/js/particles.js'%}"></script>
+    <script src="{% static 'CV/js/particlesjs-config.json'%}"></script>
+    <script src="https://use.fontawesome.com/7d70462258.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+            $(document).ready(function () {
+                particlesJS.load('particles-js', '{% static "CV/js/particlesjs-config(2).json" %}', function() {
+            console.log('callback - particles.js config loaded');
+            });
+            });
+    </script>
+    <script>
+        $('.smoothScroll').click(function(event) {
+            event.preventDefault();
+            var href=$(this).attr('href');
+            var target=$(href);
+            var top=target.offset().top;
+            $('html,body').animate({
+              scrollTop: top
+            }, 1000);
+        });
+    </script>
+    <script>
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

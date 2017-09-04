@@ -1,0 +1,221 @@
+/*General*/
+        .flex-around{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .flex-between{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .flex-column{
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+        }
+        .blue{
+            color: dodgerblue
+        }
+        body{
+            font-family: 'Cabin', sans-serif !important;
+            background-color: silver;
+        }
+        .lbl{
+            width: 20em;
+        }
+        #myBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 20px; /* Place the button at the bottom of the page */
+            right: 30px; /* Place the button 30px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: dodgerblue; /* Set a background color */
+            color: silver; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 50px; /* Rounded corners */
+        }
+
+        #myBtn:hover {
+            background-color: darkcyan; /* Add a dark-grey background on hover */
+        }
+        /*Header*/
+        #first a{
+            color: black;
+        }
+        #first .smoothScroll:hover{
+            text-decoration: underline !important;
+        }
+        #first{
+            font-size: 1em !important;
+        }
+        .navigation{
+            border-radius: 0;
+            margin-bottom: 0;
+        }
+        .contact{
+            padding: 3% 5%;
+        }
+        /*Second*/
+        #second{
+            font-size: 1.3em !important;
+            background: url("/static/CV/img/dark-triangles.png");
+            padding: 3% 0 3% 0;
+        }
+        .presentation h1, h2, h3{
+            font-size: 3em !important;
+        }
+        .presentation{
+            padding-top: 6%;
+        }
+        /*Fourth*/
+        .rotated{
+            transform: rotate(180deg);
+        }
+        #fourth{
+            background: url('/static/CV/img/footer_lodyas.png');
+            color: silver;
+            font-size: 1.2em;
+            padding: 2% 0
+        }
+        /*Fifth*/
+        .work-block{
+            background-color: rgba(146, 145, 159, 0.5);
+            -webkit-box-shadow:0 0 20px black;
+            -o-box-shadow:0 0 20px black;
+            -moz-box-shadow:0 0 20px black;
+            box-shadow:0 0 20px black;
+            margin: 2% 0;
+            padding: 1.5%;
+            font-size: 1.3em;
+            transition: 1s;
+        }
+
+        #fifth{
+            padding: 2% 0;
+        }
+        /*Sixths*/
+        #sixths{
+            background: url('/static/CV/img/congruent_outline.png');
+            color: silver;
+            font-size: 1.4em;
+            padding: 2% 0;
+            line-height: 2em
+        }
+        /*Seventh*/
+        #seventh{
+            font-size: 1.3em;
+            padding: 2% 0;
+        }
+        /*Eights*/
+        #eights{
+            background: url('/static/CV/img/escheresque_ste.png');
+            color: silver;
+            padding: 2% 0;
+            line-height: 2em
+        }
+        #myBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 20px; /* Place the button at the bottom of the page */
+            right: 30px; /* Place the button 30px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: dodgerblue; /* Set a background color */
+            color: silver; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 50px; /* Rounded corners */
+        }
+
+        #myBtn:hover {
+            background-color: darkcyan;
+        }
+        @media screen and (min-width: 1060px){
+            .work-block:hover{
+            transform: scale(1.1, 1.1);
+            -moz-transform: scale(1.1, 1.1); /* Для Firefox */
+            -ms-transform: scale(1.1, 1.1); /* Для IE */
+            -webkit-transform: scale(1.1, 1.1); /* Для Safari, Chrome, iOS */
+            -o-transform: scale(1.1, 1.1); /* Для Opera */
+            transition: 1s;
+            cursor: pointer;
+            }
+        }
+        @media screen and (max-width: 1112px){
+            #top{
+                font-size: 0.9em;
+            }
+        }
+        @media screen and (max-width: 1040px){
+            #top{
+                font-size: 0.8em;
+            }
+            #fifth{
+                font-size: 1em;
+            }
+        }
+
+        @media screen and (max-width: 992px){
+            #fourth{
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                align-items: center;
+            }
+            #sixths{
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        @media screen and (max-width: 800px){
+            .letter{
+                font-size: 1em !important;
+            }
+             #seventh{
+                 font-size: 1.1em !important;
+             }
+        }
+        @media screen and (max-width: 768px){
+            #second{
+                font-size: 1em !important;
+            }
+            #fourth{
+                font-size: 1em !important;
+            }
+            #sixths{
+                font-size: 1em !important;
+            }
+            #tenths{
+                font-size: 1em !important;
+            }
+            .work-block{
+                font-size: 0.8em !important;
+            }
+        }
+        @media screen and (max-width: 500px){
+        }
+        @media screen and (max-width: 370px){
+            #second{
+                font-size: 0.8em !important;
+            }
+            #seventh{
+                font-size: 0.8em !important;
+            }
+            .letter{
+                font-size: 0.9em !important;
+            }
+            #ninth{
+                padding: 0 1%;
+            }
+            #tenths{
+                font-size: 0.8em !important;
+            }
+        }
